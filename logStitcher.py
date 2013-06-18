@@ -12,12 +12,13 @@ for root, dirs, files in os.walk(target_dir):
 
 images = {}
 for item in files:
-	# print ("Item = {0}".format(item))
+	print ("Item = {0}".format(item))
+
 	filename, ext = os.path.splitext(os.path.basename(item))
 	print("Filename = {0} Ext = {1}".format(filename, ext))
 	if ext.lower() == ".jpg":
 		filekey = int(filename.split('_')[1])
-		images.setdefault(filekey, item)
+		images.setdefault(filekey, os.path.join(root,item))
 
 print(images)
 
@@ -31,3 +32,5 @@ for key, item in orderedImages.iteritems():
 	ImgM['width'] += img.size[0]
 	if img.size[1] > ImgM['height']:
 		ImgM['height'] = img.size[1]
+
+print ImgM
