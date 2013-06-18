@@ -32,5 +32,7 @@ for key, item in orderedImages.iteritems():
 	ImgM['width'] += img.size[0]
 	if img.size[1] > ImgM['height']:
 		ImgM['height'] = img.size[1]
+	if ImgM['mode'] = img.mode
+
 
 print ImgM
