@@ -3,7 +3,9 @@ import collections
 from PIL import Image
 
 target_dir = r"O:\Well Files Operated\Cline 1-14\Core\Pictures"
-
+# target_dir = r"C:\Users\wnixon\Documents\GitHub\stitchLogImages\testImages"
+out_file = r"C:\Users\wnixon\Documents\GitHub\stitchLogImages\mergedLogImg.png"
+num_files = 50
 for root, dirs, files in os.walk(target_dir):
 	print('''Reading Files From:
 				ROOT = {0}
@@ -11,7 +13,7 @@ for root, dirs, files in os.walk(target_dir):
 				FILES = {2}'''.format(root, dirs, files))
 
 images = {}
-for item in files:
+for item in files[:num_files]:
 	print ("Item = {0}".format(item))
 
 	filename, ext = os.path.splitext(os.path.basename(item))
@@ -32,7 +34,22 @@ for key, item in orderedImages.iteritems():
 	ImgM['width'] += img.size[0]
 	if img.size[1] > ImgM['height']:
 		ImgM['height'] = img.size[1]
-	if ImgM['mode'] = img.mode
+	ImgM['mode'] = img.mode
+	# if ImgM['mode'] != img.mode:
+		# print("ImgM['height'] = {0} != img.mode = {1}".format(ImgM['mode'],img.mode))
+	del img
+bigIm = Image.new(ImgM['mode'], (ImgM['width'],ImgM['height']))
 
+upperLeftX = 0
+upperLeftY = 0
 
-print ImgM
+for key, item in orderedImages.iteritems():
+	img2 = Image.open(item)
+
+	bigIm.paste(img2,(upperLeftX,upperLeftY))
+	upperLeftX += img2.size[0]
+	 
+	del img2
+
+bigIm.save(out_file)
+
