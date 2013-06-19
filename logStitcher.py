@@ -3,9 +3,9 @@ import collections
 from PIL import Image
 import math
 
-target_dir = r"O:\Well Files Operated\Cline 1-14\Core\Pictures"
+target_dir = r"O:\Well Files Operated\Mathews 2-8H\Core\Pictures"
 # target_dir = r"C:\Users\wnixon\Documents\GitHub\stitchLogImages\testImages"
-out_folder = r"C:\Users\wnixon\Documents\GitHub\stitchLogImages"
+out_folder = r"O:\Well Files Operated\Mathews 2-8H\Core\MergedLogPhotos"
 chunk_size = 50
 ##FIGURE OUT A WAY TO DO THIS IN 50 PICTURE CHUNKS
 
@@ -42,7 +42,7 @@ print(chunked_list)
 
 i=0
 for chunk in chunked_list:
-	filename = "mergeLogImage{0}.png".format(i)
+	filename = "Matthews1-8_MergedCoreImages_Part_{0}.png".format(i)
 	out_file = os.path.join(out_folder, filename)
 	i += 1
 
