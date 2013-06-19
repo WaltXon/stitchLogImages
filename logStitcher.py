@@ -37,7 +37,7 @@ def chunks(l,n):
 	for i in xrange(0, len(l), n):
 		return [l[i:i+n] for i in range(0, len(l), n)]
 
-chunked_list = chunks(imageList, number_of_chunks)
+chunked_list = chunks(imageList, chunk_size)
 print(chunked_list)
 
 i=0
@@ -65,7 +65,7 @@ for chunk in chunked_list:
 	upperLeftY = 0
 
 	for item2 in chunk:
-		img2 = Image.open(item)
+		img2 = Image.open(item2)
 
 		bigIm.paste(img2,(upperLeftX,upperLeftY))
 		upperLeftX += img2.size[0]
@@ -73,5 +73,6 @@ for chunk in chunked_list:
 		del img2
 
 	bigIm.save(out_file)
+	print("{0} saved".format(out_file))
 	del bigIm
 
